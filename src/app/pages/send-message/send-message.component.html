@@ -1,0 +1,15 @@
+<div class="mb-3 mt-3">
+  <label for="message" class="form-label">Write your message</label>
+  <textarea
+    [(ngModel)]="message.content"
+    class="form-control" id="message" rows="3"></textarea>
+</div>
+<div class="mb-3 text-end" *ngIf="errMsg.length===0 ; else probleme">
+  <button
+    (click)="sendMessage()"
+    class="btn btn-primary" type="submit"><em class="fas fa-paper-plane">&nbsp;send</em></button>
+</div>
+<ng-template #probleme>
+<!--  <span *ngIf="errMsg"> {{errMsg}} </span>-->
+</ng-template>
+

@@ -1,0 +1,411 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Swagger Api documentation for Saraha application",
+    "version" : "0.0.1-SNAPSHOT",
+    "title" : "Swagger Api Documentation for Saraha application"
+  },
+  "basePath" : "http://localhost:8080/saraha-api",
+  "paths" : {
+    "/messages/" : {
+      "post" : {
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/MessageDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/messages/all/public" : {
+      "get" : {
+        "operationId" : "findAllPublicMessages",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MessageDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/messages/mark-as-fav/{id-message}" : {
+      "patch" : {
+        "operationId" : "markAsFavorite",
+        "parameters" : [ {
+          "name" : "id-message",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/messages/publish/{id-message}" : {
+      "patch" : {
+        "operationId" : "publishMessage",
+        "parameters" : [ {
+          "name" : "id-message",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/messages/received/{user-id}" : {
+      "get" : {
+        "operationId" : "findAllReceivedMessagesByUser",
+        "parameters" : [ {
+          "name" : "user-id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MessageDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/messages/sent/{user-id}" : {
+      "get" : {
+        "operationId" : "findAllSentMessagesByUser",
+        "parameters" : [ {
+          "name" : "user-id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MessageDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/messages/unmark-as-fav/{id-message}" : {
+      "patch" : {
+        "operationId" : "unmarkAsFavorite",
+        "parameters" : [ {
+          "name" : "id-message",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/messages/unpublish/{id-message}" : {
+      "patch" : {
+        "operationId" : "unPublishMessage",
+        "parameters" : [ {
+          "name" : "id-message",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/notifications/{user-id}" : {
+      "get" : {
+        "operationId" : "findAllNotificationsByUser",
+        "parameters" : [ {
+          "name" : "user-id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/NotificationDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/login" : {
+      "post" : {
+        "operationId" : "login",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/AuthentificationRequest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/AuthentificationResponse"
+            }
+          }
+        }
+      }
+    },
+    "/users/recently-joined-users" : {
+      "get" : {
+        "operationId" : "recentlyJoinedUsers",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/UserDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/register" : {
+      "post" : {
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/UserDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/UserDto"
+            }
+          }
+        }
+      }
+    },
+    "/users/search" : {
+      "get" : {
+        "operationId" : "searchUser",
+        "parameters" : [ {
+          "name" : "first-name",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "last-name",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "user-name",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/UserDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user-email}" : {
+      "get" : {
+        "operationId" : "findByEmail",
+        "parameters" : [ {
+          "name" : "user-email",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/UserDto"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "AuthentificationRequest" : {
+      "type" : "object",
+      "properties" : {
+        "email" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AuthentificationResponse" : {
+      "type" : "object",
+      "properties" : {
+        "token" : {
+          "type" : "string"
+        }
+      }
+    },
+    "MessageDto" : {
+      "type" : "object",
+      "required" : [ "content", "receiverId" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "publicMsg" : {
+          "type" : "boolean"
+        },
+        "createdDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "content" : {
+          "type" : "string"
+        },
+        "favori" : {
+          "type" : "boolean"
+        },
+        "typeMsg" : {
+          "type" : "string"
+        },
+        "senderId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "receiverId" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "NotificationDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "createDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "notification" : {
+          "type" : "string"
+        },
+        "consulted" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "UserDto" : {
+      "type" : "object",
+      "required" : [ "email", "firstname", "lastname", "password" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "firstname" : {
+          "type" : "string"
+        },
+        "username" : {
+          "type" : "string"
+        },
+        "lastname" : {
+          "type" : "string"
+        },
+        "birthDate" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string",
+          "minLength" : 8,
+          "maxLength" : 16
+        }
+      }
+    }
+  }
+}

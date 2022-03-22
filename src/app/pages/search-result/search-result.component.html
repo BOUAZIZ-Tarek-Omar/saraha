@@ -1,0 +1,18 @@
+<div class="p-3" *ngIf="searchResult.length>0; else emptyResult">
+  <div class="d-flex flex-wrap justify-content-between">
+    <app-avatar
+      *ngFor="let user of searchResult"
+      [displayLabel]="user.username +' ' "
+      [userId]="user.id"
+      (avatarClick)="sendMessage($event)"
+    >
+
+    </app-avatar>
+
+  </div>
+</div>
+<ng-template #emptyResult>
+  <div class="alert alert-warning" role="alert">
+    No User with search criteria '{{searchKeyWord}}' matched !
+  </div>
+</ng-template>

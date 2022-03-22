@@ -1,0 +1,8 @@
+<div
+  (click)="onAvatarClick()"
+  class="d-flex flex-column cursor-pointer">
+  <div class="card p-2 rounded-circle">
+    <img [src]="imageUrl" class="rounded mx-auto d-block" alt="" width="50px" height="50px"/>
+  </div>
+  <p class="text-capitalize">{{displayLabel}}</p>
+</div>
